@@ -1,0 +1,71 @@
+<div class="main">
+  <div class="search-filter">
+    <div class="search">
+      <input type="search" placeholder="Search here..." name="search" [(ngModel)]="searchValue" class="input-search"
+        (input)="onSearch()">
+    </div>
+    <div class="filter">
+      <select #statusSelect name="filterValue" (click)="onFilterStatus(statusSelect.value)" class="filter-select">
+        <option value="" selected>Select status to filter</option>
+        <option *ngFor="let status of loanStatus" [value]="status">{{status.toUpperCase()}}</option>
+      </select>
+    </div>
+    <div class="filter">
+      <select #typeSelect name="loanType" (click)="onFilterType(typeSelect.value)" class="filter-select">
+        <option value="" selected>Select loan type to filter</option>
+        <option *ngFor="let type of loanType" [value]="type.loanTypeName">{{type.loanTypeName}}</option>
+      </select>
+      <div class="button">
+        <button type="button" (click)='reset()' class="btn">reset</button>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="searchValue.length === 0 || tempLoanApplication.length > 0 ; else noResult">
+    <ng-container *ngIf="!isFiltering || tempLoanApplication.length > 0 ; else noResult">
+  <table class="loans-table">
+    <thead>
+      <tr>
+        <th>Loan Number</th>
+        <th>LoanType</th>
+        <th>Loan Amount</th>
+        <th>Tenure</th>
+        <th>Customer Name</th>
+        <th>Status</th>
+        <th>Applied Date</th>
+        <th>Property Address</th>
+        <th>Property Proof</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let loan of (tempLoanApplication.length > 0 ? tempLoanApplication : loans)" [class.cancelled]="loan.status==='CANCELLED'" [class.rejected]="loan.status==='REJECTED'" [class.approved]="loan.status==='APPROVED'" [class.pending]="loan.status==='PENDING'">
+          <td>{{ loan.loanId }}</td>
+          <td>{{ loan.loanTypeName }}</td>
+          <td>{{ loan.principal | currency: 'INR' }}</td>
+          <td>{{ loan.tenure }} M</td>
+          <td>{{ loan.customerName }} <a [routerLink]="['/admin/view-customer-details', loan.customerId]">(view)</a>
+          </td>
+          <td>{{ loan.status }}</td>
+          <td>{{ loan.loanApplyDate }}</td>
+          <td>{{ loan.propertyAddress }}, INDIA</td>
+          <td><a (click)="downloadFile(loan.propertyProofId,loan.propertyFile)" download><i class="fa fa-download"></i>{{ loan.propertyFile }}</a></td>
+          <td>
+            <select (change)="onActionChange($event, loan.loanId)" [disabled]="loan.status === 'REJECTED' || loan.status === 'CANCELLED' || loan.status === 'APPROVED'">
+              <option [value]="loan.status" selected>{{ loan.status }}</option>
+              <option *ngIf="(loan.status !== 'APPROVED')  " value="APPROVED">APPROVE</option>
+              <option *ngIf="(loan.status !== 'REJECTED') " value="REJECTED">REJECT</option>
+              <option *ngIf="(loan.status !== 'Pending') " value="PENDING">PENDING</option>
+            </select>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</ng-container>
+</ng-container> 
+</div>
+<ng-template #noResult>
+  <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+    <p>No Loan Application found</p>
+  </div>
+</ng-template>
+

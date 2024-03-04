@@ -1,0 +1,117 @@
+.main{
+  margin: 20px 20px 70px;
+}
+
+.search-filter {
+  display:flex;
+  justify-content: flex-end;
+}
+
+.loans-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.loans-table th, .loans-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #333; /* Dark text color */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+}
+
+.loans-table th {
+  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
+  font-weight: bold;
+}
+
+.loans-table tr:nth-child(even) {
+  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
+}
+
+.loans-table tr:hover {
+  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
+}
+
+.loans-table select {
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.loans-table a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.loans-table a:hover {
+  text-decoration: underline;
+}
+
+.loans-table tr.rejected {
+  background-color: #b8051a !important;
+}
+.loans-table tr.approved {
+  background-color: #09ea45 !important;
+}
+.loans-table tr.pending {
+  background-color: #c5f516 !important;
+}
+.loans-table tr.cancelled {
+  background-color: #ccc !important;
+}
+
+.fa-download {
+  margin-right: 4px;
+}
+
+.filter {
+  display: inline;
+  align-items: center;
+  margin-right: 10px;;
+}
+
+.search {
+  display: inline;
+  margin-right: 20px;
+}
+
+.filter-select , .input-search{
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+button {
+  background-color: blue;
+  color: white;
+}
+
+.btn {
+  padding: 8px 12px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s ease;
+}
+
+.btn:focus {
+  outline: none;
+}
+

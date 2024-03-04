@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="form-table">
+        <thead>
+            <tr>
+                <th>Loan Type ID</th>
+                <th>Loan Type Name</th>
+                <th>Loan Interest Base Rate</th>
+                <th>Loan Management Fees</th>
+                <th>Apply-Now</th>
+                <!-- <th>Service</th> -->
+            </tr>
+        </thead>
+        <tr *ngFor="let loans of loanTypeList">
+            <td>{{loans.loanTypeId}}</td>
+            <td>{{loans.loanTypeName}}</td>
+            <td>{{loans.loanInterestBaseRate}}</td>
+            <td>{{loans.loanManagementFees}}</td>
+            <td><button type="button" class="btn" (click)="applyLoan()">Apply for Loan</button></td>
+            <!-- <td><button type="button" class="btn" (click)="calculateEMI(loans.loanTypeName)">Check EMI</button></td> -->
+        </tr>
+    </table>
+</div>

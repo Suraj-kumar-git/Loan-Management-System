@@ -1,0 +1,15 @@
+.footer {
+  background-color: #333;
+  color: #fff;
+  /* position: relative; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.content{
+  display: flex;
+  justify-content: center;
+}
+.footer-content{
+  margin: 0 40px;
+}

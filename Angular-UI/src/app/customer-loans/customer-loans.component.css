@@ -1,0 +1,131 @@
+.container {
+  /* max-width: 800px; */
+  margin: 0 auto ;
+  margin-bottom: 70px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table tr.rejected {
+  background-color: #b8051a !important;
+}
+.form-table tr.approved {
+  background-color: #09ea45 !important;
+}
+.form-table tr.pending {
+  background-color: #c5f516 !important;
+}
+.form-table tr.cancelled {
+  background-color: #ccc !important;
+}
+
+/* .form-table th, .form-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.form-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.form-table td {
+  background-color: #fff;
+  color: #555;
+}
+
+.form-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.form-table tr:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+} */
+.form-table th, .form-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #333; /* Dark text color */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+}
+
+.form-table th {
+  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
+  font-weight: bold;
+}
+
+.form-table tr:nth-child(even) {
+  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
+}
+
+.form-table tr:hover {
+  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
+}
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+.input-search{
+  /* margin-left: auto; Push the search bar and its button to the right */
+  margin-right: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+.filter {
+  display: inline;
+}
+.main{
+float: inline-end;
+}
+.disabled-btn {
+ 
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+.disabled-btn:hover{
+  background-color: #ccc;
+}

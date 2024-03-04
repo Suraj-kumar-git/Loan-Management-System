@@ -1,0 +1,33 @@
+<div class="admin-details">
+  <h2>Admin Details</h2>
+  <div class="admin-info">
+    <label for="adminId">Admin ID:</label>
+    <input type="number" id="adminId" [(ngModel)]="admin.adminId" disabled>
+
+    <label for="adminFirstName">First Name:</label>
+    <input type="text" id="adminFirstName" name="adminFirstName" [(ngModel)]="admin.adminFirstName" [disabled]="!editMode" #adminFirstName="ngModel" required>
+    <div *ngIf="adminFirstName.errors?.['required']" style="color:red;">First Name is required*</div>
+
+    <label for="adminLastName">Last Name:</label>
+    <input type="text" id="adminLastName" name="adminLastName"[(ngModel)]="admin.adminLastName" [disabled]="!editMode" #adminLastName="ngModel" required>
+    <div *ngIf="adminLastName.errors?.['required']" style="color:red;">Last Name is required*</div>
+
+    <label for="email">Email:</label>
+<input type="email" id="email" name="email" [(ngModel)]="admin.email" [disabled]="!editMode" #email="ngModel"
+       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+<div *ngIf="email.errors?.['pattern']" style="color: red;">Invalid email format</div>
+
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" [(ngModel)]="admin.password" [disabled]="!editMode" #password="ngModel" required minlength="8">
+    <div *ngIf="password.errors?.['minlength']" style="color:red;">Password Must be atleast 8 characters long</div>
+  </div>
+  <div class="buttons">
+    <button (click)="toggleEditMode()">
+      <i class="fa fa-edit"></i> {{ editMode ? 'Cancel' : 'Edit' }}
+    </button>
+    <button [ngClass]="{'disabled-button': !editMode}" *ngIf="editMode" (click)="saveChanges()">
+      <i class="fa fa-save"></i> Save
+    </button>
+  </div>
+</div>

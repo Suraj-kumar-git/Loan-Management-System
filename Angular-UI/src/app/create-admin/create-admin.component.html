@@ -1,0 +1,36 @@
+<div class="create-admin-container">
+  <h2>Create Admin</h2>
+  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="adminFirstName">First Name</label>
+      <input type="text" id="adminFirstName" formControlName="adminFirstName">
+      <div *ngIf="adminForm.get('adminFirstName')?.invalid && (adminForm.get('adminFirstName')?.dirty || adminForm.get('adminFirstName')?.touched)" class="error-message">
+        <div *ngIf="adminForm.get('adminFirstName')?.hasError('required')">First Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="adminLastName">Last Name</label>
+      <input type="text" id="adminLastName" formControlName="adminLastName">
+      <div *ngIf="adminForm.get('adminLastName')?.invalid && (adminForm.get('adminLastName')?.dirty || adminForm.get('adminLastName')?.touched)" class="error-message">
+        <div *ngIf="adminForm.get('adminLastName')?.hasError('required')">Last Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="adminForm.get('email')?.invalid && (adminForm.get('email')?.dirty || adminForm.get('email')?.touched)" class="error-message">
+        <div *ngIf="adminForm.get('email')?.hasError('required')">Email is required.</div>
+        <div *ngIf="adminForm.get('email')?.hasError('invalidEmail')">Invalid email format.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="adminForm.get('password')?.invalid && (adminForm.get('password')?.dirty || adminForm.get('password')?.touched)" class="error-message">
+        <div *ngIf="adminForm.get('password')?.hasError('required')">Password is required.</div>
+        <div *ngIf="adminForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!adminForm.valid">Create Admin</button>
+  </form>
+</div>

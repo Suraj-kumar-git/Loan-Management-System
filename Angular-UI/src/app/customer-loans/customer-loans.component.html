@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="main">
+    <div class="filter">
+      <input type="search" name="search" placeholder="Search here.." [(ngModel)]="searchValue" class="input-search" (input)="onSearch()">
+    </div>
+    
+  </div>
+  <ng-container *ngIf="searchValue.length===0 || tempLoanApplication.length > 0 ; else noResult">
+  <div class="table-container">
+    <table class="form-table">
+      <thead>
+        <tr>
+          <th>Loan Number</th>
+          <th>Principal</th>
+          <th>Interest Rate</th>
+          <th>Tenure</th>
+          <th>Status</th>
+          <th>Applied Date</th>
+          <th>Loan Type</th>
+          <th>Estd. Interest</th>
+          <th>EMI</th>
+          <th>Actions</th>
+          <th>Cancel</th>
+      </thead>
+      <tr *ngFor="let loans of (tempLoanApplication.length > 0 ? tempLoanApplication : loanApplication)" [class.rejected]="loans.status === 'REJECTED'" [class.cancelled]="loans.status === 'CANCELLED'" [class.approved]="loans.status === 'APPROVED'" [class.pending]="loans.status === 'PENDING'">
+        <td>{{loans.loanId}}</td>
+        <td>{{loans.principal | currency:'INR'}}</td>
+        <td>{{loans.interestRate}}%</td>
+        <td>{{loans.tenure}} M</td>
+        <td>{{loans.status}}</td>
+        <td>{{loans.loanApplyDate}}</td>
+        <td>{{loans.loanTypeName}}</td>
+        <td>{{loans.totalInterest}}</td>
+        <td>{{loans.emi}}</td>
+        <td>
+         
+          <button type="button" class="btn" id="update" *ngIf="loans.status === 'PENDING'; else disabledUpdate" (click)="updateLoan(loans.loanId)">Update</button>
+          <ng-template #disabledUpdate>
+            <button type="button" class="btn disabled-btn">Update</button>
+          </ng-template>
+        </td>
+        <td>
+          <button type="button" class="btn" id="cancel" *ngIf="loans.status === 'PENDING'; else disabledCancel" (click)="cancelLoan(loans.loanId)">Cancel</button>
+          <ng-template #disabledCancel>
+            <button type="button" class="btn disabled-btn">Cancel</button>
+          </ng-template>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>
+<ng-template #noResult>
+  <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+    <p>No Loan Application found</p>
+  </div>
+</ng-template>
+</div>

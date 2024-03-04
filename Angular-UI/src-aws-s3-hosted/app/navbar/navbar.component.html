@@ -1,0 +1,41 @@
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="logo">
+        <img src="assets/image/icon.png" alt="LMS" id="icon">
+     </div>     
+      <ul>
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/home')" routerLink="/home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/home')" routerLink="admin/home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/home')" routerLink="customer/home"><i class="fas fa-home icon"></i></a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-customers')" routerLink="/admin/view-all-customers">Customers</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/create-admin')" routerLink="admin/create-admin">Create Admin</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-admin')" routerLink="admin/view-all-admin">Admins</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/view-all-loans')" routerLink="admin/view-all-loans">Loans</a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/myLoans')" routerLink="customer/myLoans">MyLoans</a></li>
+
+        <li *ngIf="!isLoggedIn || userRole()==='USER'"><a [class.current]="isActive('/calculateEMI')" routerLink="calculateEMI">EMI Calc.</a></li>
+
+        <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/account')" routerLink="admin/account"><i class="fas fa-user"></i></a></li>
+
+        <li *ngIf="userRole()==='USER'"><a [class.current]="isActive('/customer/account')" routerLink="customer/account"><i class="fas fa-user"></i></a></li>
+
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/login')" routerLink="/login">Login</a></li>
+
+        <li *ngIf="!isLoggedIn"><a [class.current]="isActive('/register')" routerLink="/register">Register</a></li>
+
+        <!-- <li *ngIf="userRole()==='ADMIN'"><a [class.current]="isActive('/admin/notifications')" routerLink="admin/notifications"><i class="fas fa-bell"></i></a></li> -->
+
+        <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+</body>

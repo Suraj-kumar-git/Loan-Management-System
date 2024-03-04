@@ -1,0 +1,50 @@
+<div class="customer-list-container">
+  <h2>Customers List</h2>
+    <div class="search">
+      <div class="search-inside">
+        <input type="search" placeholder="Search here..." name="search" [(ngModel)]="searchValue" class="input-search" (input)="onSearch()">
+      </div>
+    </div>
+    <ng-container *ngIf="searchValue.length === 0 || tempCustomer.length > 0; else noResult">
+  <table class="customer-table">
+    <thead>
+      <tr>
+        <th>Customer ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Credit Score</th>
+        <th>PAN Card Number</th>
+        <th>ID Proof</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let customer of (tempCustomer.length > 0 ? tempCustomer : customers)">
+        <td>{{ customer.customerId }}</td>
+        <td>{{ customer.customerFirstName }} {{ customer.customerLastName }}</td>
+        <td>{{ customer.phoneNumber }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.dateOfBirth }}</td>
+        <td>{{ customer.gender }}</td>
+        <td>{{ customer.age }} Y</td>
+        <td>{{ customer.fullAddress }}</td>
+        <td>{{ customer.creditScore }}</td>
+        <td>{{ customer.panCardNumber }}</td>
+        <td><a (click)="downloadCustomerIdFile(customer.customerProofId,customer.idProofName)" download>Download<i class="fa fa-download"></i>
+        </a></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+</div>
+<ng-template #noResult>
+  <div style="font-weight: bold; text-align: center; margin-top: 20vh; font-size: 24px;">
+    <p>No Customer found</p>
+  </div>
+</ng-template>
+

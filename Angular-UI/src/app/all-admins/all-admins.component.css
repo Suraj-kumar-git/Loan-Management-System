@@ -1,0 +1,106 @@
+/* .container {
+  max-width: 600px;
+  margin: 20px auto 70px;
+  text-align: center;
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.search-inside {
+  position: relative;
+}
+
+.input-search {
+  padding: 8px 16px;
+  border: 1px solid #3d3a3a;
+  border-radius: 4px;
+  width: 300px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+} */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px auto 70px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.search-inside {
+  position: relative;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  background-color: aqua;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #333; 
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+table th {
+  background-color: #f2f2f2; /* Light gray background color for headers */
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
+}
+
+table tr:hover {
+  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
+}
+
+.input-search {
+  margin-right: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

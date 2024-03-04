@@ -1,0 +1,62 @@
+.customer-list-container{
+  margin: 20px 20px 70px;
+}
+h2{
+  text-align: center;
+  background-color: aqua;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+.search-inside {
+  position: relative;
+}
+
+.input-search {
+  padding: 8px 16px;
+  border: 1px solid #3d3a3a;
+  border-radius: 4px;
+  width: 300px;
+}
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.customer-table th, .customer-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #333; /* Dark text color */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+}
+
+.customer-table th {
+  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
+  font-weight: bold;
+}
+
+.customer-table tr:nth-child(even) {
+  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
+}
+
+.customer-table tr:hover {
+  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
+}
+
+/* CSS for the download icon */
+.fa {
+  color: blue; /* Change color as needed */
+  cursor: pointer;
+}
+
+.fa:hover {
+  color: darkblue; /* Change color as needed */
+}
