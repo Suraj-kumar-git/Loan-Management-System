@@ -9,7 +9,7 @@ import { UserAuthService } from './user-auth.service';
 })
 export class LoanTypeService {
   
-  PATH_OF_API:string="http://suraj-palash-backend-lms.us-east-1.elasticbeanstalk.com/api/admin";
+  PATH_OF_API:string="http://loanManagementSystem.us-east-1.elasticbeanstalk.com/api/admin";
   constructor(private http: HttpClient,private userAuthService:UserAuthService) { }
 
   getAuthorizationToken():any{
@@ -19,15 +19,11 @@ export class LoanTypeService {
   }
   
   getLoanTypes(): Observable<LoanType[]> {
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<LoanType[]>(this.PATH_OF_API+'/allLoanTypes',{headers});
+    return this.http.get<LoanType[]>(this.PATH_OF_API+'/allLoanTypes',{headers:this.getAuthorizationToken()});
   }
   createNewLoan(loan:LoanType){
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const url = this.PATH_OF_API+'/createLoanType';
-    return this.http.post(url,loan, {headers});
+    return this.http.post(url,loan, {headers:this.getAuthorizationToken()});
   }
 
   updateLoanType(loan:LoanType):Observable<LoanType>{

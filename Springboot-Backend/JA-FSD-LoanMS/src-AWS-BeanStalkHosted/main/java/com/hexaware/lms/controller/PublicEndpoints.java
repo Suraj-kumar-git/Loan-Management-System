@@ -31,7 +31,7 @@ import com.hexaware.lms.service.ILoanTypeService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin("http://fsd-final-project-angular.s3-website-us-east-1.amazonaws.com")
+@CrossOrigin("http://loan-management-system-java-fsd-training.s3-website.ap-south-1.amazonaws.com")
 @RestController
 @RequestMapping("/api")
 public class PublicEndpoints {

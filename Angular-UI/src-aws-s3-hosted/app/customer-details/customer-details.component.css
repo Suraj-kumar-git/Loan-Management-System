@@ -20,11 +20,11 @@
 
 .detail-label {
   font-weight: bold;
-  margin-right: 10px; /* Add margin between label and value */
+  margin-right: 10px;
 }
 
 .detail-value {
-  flex-grow: 1; /* Expand to fill remaining space */
+  flex-grow: 1;
 }
 
 .detail-label a {

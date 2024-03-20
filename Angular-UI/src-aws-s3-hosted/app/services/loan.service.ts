@@ -8,7 +8,7 @@ import { UserAuthService } from './user-auth.service';
 })
 export class LoanService {
 
-  PATH_OF_API:string="http://suraj-palash-backend-lms.us-east-1.elasticbeanstalk.com/api/admin";
+  PATH_OF_API:string="http://loanManagementSystem.us-east-1.elasticbeanstalk.com/api/admin";
   constructor(private http: HttpClient,private userAuthService: UserAuthService) { }
 
   updateLoanStatus(loanId: number, newStatus: string){

@@ -1,131 +1,120 @@
 .container {
-  /* max-width: 800px; */
-  margin: 0 auto ;
-  margin-bottom: 70px;
+  margin: 20px auto;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
-
-
-.form-table {
-  width: 100%;
-  border-collapse: collapse;
+.filter {
+  display: inline;
+  align-items: center;
+  margin: 10px;
 }
-
-.form-table tr.rejected {
-  background-color: #b8051a !important;
+.search {
+  display: inline;
+  margin:10px;
 }
-.form-table tr.approved {
-  background-color: #09ea45 !important;
-}
-.form-table tr.pending {
-  background-color: #c5f516 !important;
-}
-.form-table tr.cancelled {
-  background-color: #ccc !important;
-}
-
-/* .form-table th, .form-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-.form-table th {
-  background-color: #f2f2f2;
-  color: #333;
-}
-
-.form-table td {
-  background-color: #fff;
-  color: #555;
-}
-
-.form-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.form-table tr:hover {
-  background-color: #f0f0f0;
-  transition: background-color 0.3s ease;
-} */
-.form-table th, .form-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-  color: #333; /* Dark text color */
-  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
-}
-
-.form-table th {
-  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
-  font-weight: bold;
-}
-
-.form-table tr:nth-child(even) {
-  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
-}
-
-.form-table tr:hover {
-  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
-}
-.button-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.button-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+.input-search {
+  padding: 8px 16px;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 200px;
 }
-
-.button-container button:hover {
-  background-color: #0056b3;
-}
-
-.input-search{
-  /* margin-left: auto; Push the search bar and its button to the right */
-  margin-right: 20px;
+.filter-select , .input-search{
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #0e0303;
   background-color: #fff;
   font-size: 14px;
   margin-bottom: 10px;
+  width: 200px;
 }
-.btn {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 8px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  cursor: pointer;
+
+@media (max-width: 815px) {
+  .search,
+  .filter {
+    flex-basis: 100%;
+  }
+}
+
+.loan-details-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px; 
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loan-details {
+  border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.loan-details.cancelled {
+  background-color: #f5ebebe8;
+}
+.loan-details.rejected {
+  background-color: #f47382d9;
+}
+.loan-details.approved {
+  background-color: #a5f0b9df;
+}
+.loan-details.pending {
+  background-color: #c9d59dda;
+}
+
+@media (max-width: 768px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px; 
+}
+
+.button-container {
+  display: flex;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
   background-color: #0056b3;
+  transition: background-color 0.3s ease;
 }
-.filter {
-  display: inline;
+
+.btn:focus {
+  outline: none;
 }
-.main{
-float: inline-end;
-}
+
 .disabled-btn {
- 
   background-color: #ccc;
   color: #666;
   cursor: not-allowed;
 }
-.disabled-btn:hover{
+
+.disabled-btn:hover {
   background-color: #ccc;
 }

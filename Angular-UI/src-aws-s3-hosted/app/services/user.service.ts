@@ -10,7 +10,7 @@ import { Customer } from '../Model/Customer';
 })
 export class UserService {
 
-  PATH_OF_API="http://suraj-palash-backend-lms.us-east-1.elasticbeanstalk.com/api";
+  PATH_OF_API="http://loanManagementSystem.us-east-1.elasticbeanstalk.com/api";
 
   requestHeader = new HttpHeaders({"No-Auth":"True"});
 

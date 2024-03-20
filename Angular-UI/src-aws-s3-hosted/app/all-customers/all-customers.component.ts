@@ -45,6 +45,19 @@ export class AllCustomersComponent {
         const age = this.calculateAge(customer.dateOfBirth);
         const idProofName = `${customer.idProofFile.fileName}`;
         const customerProofId = customer.idProofFile.customerProofId;
+        const profileImage = customer.profileImage;
+        if (profileImage) {
+          const imageData=customer.image;
+          let format = 'jpeg';
+          if (profileImage.toLowerCase().endsWith('.jpeg')) {
+            format = 'jpeg';
+          } else if (profileImage.toLowerCase().endsWith('.jpg')) {
+            format = 'jpg';
+          } else if (profileImage.toLowerCase().endsWith('.png')) {
+            format = 'png';
+          }
+          customer.image = this.getImageUrl(imageData, format);
+        }
         const fullAddress = `${customer.address}, ${customer.state}, ${customer.country}`;
 
         return {
@@ -56,9 +69,12 @@ export class AllCustomersComponent {
           fullAddress
         };
       });
-      // Load customers into tempCustomer initially
       this.tempCustomer = this.customers;
     });
+  }
+
+  getImageUrl(base64String: string, format: string): string {
+    return `data:image/${format};base64,${base64String}`;
   }
 
   calculateAge(dateOfBirth: Date): number {

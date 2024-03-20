@@ -12,7 +12,7 @@ export class CreateAdminComponent implements OnInit {
 
   adminForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private adminService:AdminService) { }
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.adminForm = this.formBuilder.group({
@@ -30,13 +30,10 @@ export class CreateAdminComponent implements OnInit {
   }
   onSubmit() {
     if (this.adminForm.valid) {
-      this.adminService.createAdmin(this.adminForm.value).subscribe((data)=>{
-        if(data===true){
-          alert("Admin Created Successfully");
-        }
-        else{
-          alert("Admin Creation Failed");
-        }
+      this.adminService.createAdmin(this.adminForm.value).subscribe((data) => {
+        alert("Admin Created Successfully");
+      }, (error) => {
+        alert('Error: Admin already exists' );
       });
     }
   }

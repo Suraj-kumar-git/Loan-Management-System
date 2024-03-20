@@ -11,7 +11,6 @@ body{
   display: flex;
   align-items: center;
   justify-content:center;
-  /* background:palegoldenrod; */
 }
 .container{
   
@@ -135,10 +134,10 @@ form button:hover{
 }
 .group {
   display: flex;
-  justify-content: space-between;   /*Align buttons at start and end of container */
+  justify-content: space-between;
 }
 #cancel {
-  margin-left: auto; /* Push Cancel button to the right */
+  margin-left: auto;
 }
 .error{
   color:red;

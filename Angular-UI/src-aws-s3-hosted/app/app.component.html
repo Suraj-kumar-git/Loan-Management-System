@@ -1,8 +1,10 @@
-<body>
-  <app-navbar></app-navbar>
+<div class="app-container">
   <div class="background">
-    <img   [src]="image" alt="">
+    <img [src]="image" alt="">
   </div>
-  <router-outlet></router-outlet>
-   <app-footer></app-footer> 
-</body>
+  <app-navbar></app-navbar>
+  <div class="router-container">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -10,6 +10,11 @@ import { CustomerService } from '../services/customer.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
+  tempLoanType: LoanType[] = [];
+  searchValue: string = '';
+  searchPerformed: boolean = false;
+
   constructor(private customerService:CustomerService, private router:Router){}
   ngOnInit(): void {
     this.getLoanTypes();
@@ -27,8 +32,15 @@ loanTypeList:LoanType[] = [];
      this.router.navigate(['/login'])
   }
 
-  // calculateEMI(loanTypeName: string) {
-  //   this.router.navigate(['calculateEMI/',loanTypeName]);
-  //  }
-  
+  onSearch() {
+    this.searchValue = this.searchValue.trim().toLowerCase();
+    if (this.searchValue) {
+      this.tempLoanType = this.tempLoanType.filter(loanType =>
+        (loanType.loanTypeName.toLowerCase().includes(this.searchValue))
+      );
+    } else {
+      this.tempLoanType = this.loanTypeList;
+    }
+    this.searchPerformed = true;
+  }
 }

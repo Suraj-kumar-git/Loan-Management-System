@@ -4,51 +4,75 @@
   width: 80%;
 }
 
-.form-table {
-  width: 100%;
-  border-collapse: collapse;
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 40px;
 }
 
-/* .form-table th, .form-table td {
-  border: 1px solid #ddd;
+.search-inside {
+  position: relative;
+}
+
+.input-search {
+  padding: 8px 16px;
+  border: 1px solid #3d3a3a;
+  border-radius: 4px;
+  width: 300px;
+}
+@media(max-width: 400px) {
+  .input-search{
+    width: 200px;
+  }
+}
+@media(max-width: 290px) {
+  .input-search{
+    width: 120px;
+  }
+}
+
+.home-details-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.home-details {
+  border: 2px solid rgb(248, 246, 246);
   padding: 8px;
-  text-align: center;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
-.form-table th {
-  background-color: #f2f2f2;
+@media (max-width: 768px) {
+  .home-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+.home-details .detail-row.email {
+  white-space: nowrap;
+}
+@media (max-width: 400px) {
+  .home-details .detail-row.email {
+    white-space: normal;
+    word-break: break-word;
+    max-width: 100%; 
+  }
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detail-label {
   font-weight: bold;
-}
-
-.form-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-  
-}
-
-.form-table tr:hover {
-  background-color: #f1f1f1;
-} */
-.form-table th, .form-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-  color: #333; /* Dark text color */
-  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
-}
-
-.form-table th {
-  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
-  font-weight: bold;
-}
-
-.form-table tr:nth-child(even) {
-  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
-}
-
-.form-table tr:hover {
-  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
-}
-
+  margin-right: 10px; 
+} 
 
 .btn {
   background-color: #4CAF50;

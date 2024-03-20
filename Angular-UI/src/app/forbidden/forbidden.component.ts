@@ -9,12 +9,20 @@ import { UserAuthService } from '../services/user-auth.service';
 })
 export class ForbiddenComponent {
   constructor(private router: Router,private userAuthService: UserAuthService) { }
-  navigateHome() {
-    if(this.userAuthService.getRole()==='ADMIN'){
+  navigateLogin() {
+    // if(this.userAuthService.getRole()==='ADMIN' && !this.userAuthService.isTokenExpired()){
+      if(this.userAuthService.getRole()==='ADMIN'){
       this.router.navigate(['admin/home']);
+    // }else if(this.userAuthService.getRole()==='USER' && !this.userAuthService.isTokenExpired()){
     }else if(this.userAuthService.getRole()==='USER'){
       this.router.navigate(['customer/home']);
-    }else{
+    // }else if(this.userAuthService.isTokenExpired()){
+    //   this.userAuthService.clearToken();
+    //   alert("Your session has expired...Please login again.");
+    //   this.router.navigate(['/login']);
+    }
+    else{
+      // window.location.reload();
       this.router.navigate(['home']);
     }
     

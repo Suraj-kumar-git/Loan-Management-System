@@ -12,12 +12,12 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .inner-box {
   width: 300px;
-  padding: 20px;
+  padding: 20px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
@@ -25,7 +25,7 @@ label {
 
 .login-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .login-body p {
@@ -34,7 +34,7 @@ label {
 
 .login-footer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .login-footer a {
@@ -58,9 +58,9 @@ button:disabled {
 
 input[type="email"],
 input[type="password"] {
-  width: 100%;
+  width: 80%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }

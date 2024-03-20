@@ -18,7 +18,6 @@ import { CustomerLoansComponent } from './customer-loans/customer-loans.componen
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { CalculateEmiComponent } from './calculate-emi/calculate-emi.component';
 import { AllAdminsComponent } from './all-admins/all-admins.component';
-import { NotificationsAdminComponent } from './notifications-admin/notifications-admin.component';
 import { UpdateLoanApplicationComponent } from './update-loan-application/update-loan-application.component';
 import { CancelAppliedLoanComponent } from './cancel-applied-loan/cancel-applied-loan.component';
 
@@ -27,7 +26,6 @@ const routes: Routes = [
   {path:'login',component: LoginComponent},
   {path:'customer/home',component:HomeCustomerComponent, canActivate: [AuthGuard], data: { role: 'USER' }},
   { path: 'admin/home', component: HomeAdminComponent, canActivate: [AuthGuard], data: { role: 'ADMIN' } },
-  {path:'admin/notifications', component:NotificationsAdminComponent,canActivate: [AuthGuard], data: { role:'ADMIN'}},
   {path:'admin/view-all-admin',component:AllAdminsComponent,canActivate: [AuthGuard], data: { role: 'ADMIN'}},
   {path:'home',component: HomeComponent},
   {path:'register',component: CustomerRegisterComponent},

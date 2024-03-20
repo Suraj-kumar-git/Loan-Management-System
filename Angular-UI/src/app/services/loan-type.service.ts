@@ -19,15 +19,11 @@ export class LoanTypeService {
   }
   
   getLoanTypes(): Observable<LoanType[]> {
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<LoanType[]>(this.PATH_OF_API+'/allLoanTypes',{headers});
+    return this.http.get<LoanType[]>(this.PATH_OF_API+'/allLoanTypes',{headers:this.getAuthorizationToken()});
   }
-  createNewLoan(loan:LoanType):Observable<any>{
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  createNewLoan(loan:LoanType){
     const url = this.PATH_OF_API+'/createLoanType';
-    return this.http.post(url,loan, {headers});
+    return this.http.post(url,loan, {headers:this.getAuthorizationToken()});
   }
 
   updateLoanType(loan:LoanType):Observable<LoanType>{

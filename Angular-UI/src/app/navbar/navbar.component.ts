@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../services/user-auth.service';
 import { UserService } from '../services/user.service';
-// import { JwtServiceService } from '../services/jwt-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -28,11 +27,11 @@ export class NavbarComponent {
     this.router.navigate(['home']);
   }
 
-  notifications = [
-    { id: 1, message: 'Notification 1', read: false },
-    { id: 2, message: 'Notification 2', read: true },
-    { id: 3, message: 'Notification 3', read: false },
-    { id: 4, message: 'Notification 3', read: false }
-  ];
-
+  isMenuOpen = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+  closeMenu(){
+    this.isMenuOpen= !this.isMenuOpen;
+  }
 }

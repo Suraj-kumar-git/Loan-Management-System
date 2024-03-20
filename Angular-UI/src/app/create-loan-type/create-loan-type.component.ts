@@ -24,13 +24,12 @@ export class CreateLoanTypeComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loanTypeForm.valid) {
-      this.loanTypeService.createNewLoan(this.loanTypeForm.value).subscribe(()=>{
-        alert("Loan Type created Successfully.");
-        this.router.navigate(['admin/view-all-loans']);
-      }
-      );
-    }
+    this.loanTypeService.createNewLoan(this.loanTypeForm.value).subscribe(() => {
+      alert("LoanType Created Successfully");
+      this.router.navigate(['admin/view-all-loans']);
+    }, (error) => {
+      alert('Error: LoanType already exists');
+    });
   }
 
 }

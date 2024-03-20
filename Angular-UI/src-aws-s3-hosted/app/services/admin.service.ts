@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AdminService {
   
   constructor(private http:HttpClient,private userAuthService:UserAuthService) { }
-  PATH_OF_API:string="http://suraj-palash-backend-lms.us-east-1.elasticbeanstalk.com/api/admin";
+  PATH_OF_API:string="http://loanManagementSystem.us-east-1.elasticbeanstalk.com/api/admin";
 
   getAuthorizationToken():any{
     let token = this.userAuthService.getToken();
@@ -19,17 +19,13 @@ export class AdminService {
   }
 
   public updateAccount(admin:any){
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const url = this.PATH_OF_API+'/update-account';
-    return this.http.put(url,admin, {headers});
+    return this.http.put(url,admin, {headers:this.getAuthorizationToken()});
   }
 
   createAdmin(admin:Admin) {
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const url = this.PATH_OF_API+'/createNewAdmin';
-    return this.http.post(url,admin, {headers});
+    return this.http.post(url,admin, {headers:this.getAuthorizationToken()});
   }
 
   getAllAdmins():Observable<Admin[]>{

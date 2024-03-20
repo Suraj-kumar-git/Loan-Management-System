@@ -19,7 +19,6 @@ import { RouterModule } from '@angular/router';
 import { AccountAdminComponent } from './account-admin/account-admin.component';
 import { AccountCustomerComponent } from './account-customer/account-customer.component';
 import { AuthGuard } from './_auth/auth.guard';
-import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './services/user.service';
 import { CustomerService } from './services/customer.service';
 import { LoanInfoService } from './services/loan-info.service';
@@ -27,12 +26,10 @@ import { AllCustomersComponent } from './all-customers/all-customers.component';
 import { CreateAdminComponent } from './create-admin/create-admin.component';
 import { AllLoansComponent } from './all-loans/all-loans.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
-import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { CustomerLoansComponent } from './customer-loans/customer-loans.component';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { CalculateEmiComponent } from './calculate-emi/calculate-emi.component';
 import { AllAdminsComponent } from './all-admins/all-admins.component';
-import { NotificationsAdminComponent } from './notifications-admin/notifications-admin.component';
 import { UpdateLoanApplicationComponent } from './update-loan-application/update-loan-application.component';
 import { CancelAppliedLoanComponent } from './cancel-applied-loan/cancel-applied-loan.component';
 
@@ -54,12 +51,10 @@ import { CancelAppliedLoanComponent } from './cancel-applied-loan/cancel-applied
     CreateAdminComponent,
     AllLoansComponent,
     CustomerDetailsComponent,
-    LoanDetailsComponent,
     CustomerLoansComponent,
     ApplyLoanComponent,
     CalculateEmiComponent,
     AllAdminsComponent,
-    NotificationsAdminComponent,
     UpdateLoanApplicationComponent,
     CancelAppliedLoanComponent,
   ],
@@ -72,7 +67,7 @@ import { CancelAppliedLoanComponent } from './cancel-applied-loan/cancel-applied
     ReactiveFormsModule,
   ],
   providers: [
-    AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
     UserService,
     CustomerService,
     LoanInfoService

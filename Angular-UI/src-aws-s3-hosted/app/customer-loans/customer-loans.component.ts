@@ -3,6 +3,8 @@ import { LoanApplications } from '../Model/LoanApplications';
 import { CustomerService } from '../services/customer.service';
 import { UserAuthService } from '../services/user-auth.service';
 import { Router } from '@angular/router';
+import { LoanType } from '../Model/LoanType';
+import { LoanTypeService } from '../services/loan-type.service';
 
 @Component({
   selector: 'app-customer-loans',
@@ -14,10 +16,18 @@ export class CustomerLoansComponent {
   tempLoanApplication :LoanApplications[] = [];
   searchValue='';
 
+  loanType: LoanType[] = [];
+  loans: LoanApplications[] = [];
+  loanStatus = ['APPROVED', 'PENDING', 'REJECTED', 'CANCELLED'];
+  selectedStatus = '';
+  selectedLoanType = '';
+  isFiltering:boolean = false;
+
   constructor(private customerService:CustomerService, private userAuthservice:UserAuthService,private router:Router){}
 
   ngOnInit(){
     this.getAllAppliedLoan();
+    this.getAllLoanType();
   }
   customerId = this.userAuthservice.getCustomer().customerId;
   isEdit = false;
@@ -48,21 +58,60 @@ export class CustomerLoansComponent {
     return parseFloat(emi.toFixed(2));
   }
   
-  
-  
-  onSearch(){
-    if(this.searchValue){
-    this.tempLoanApplication = this.loanApplication.filter(loan=>(
-      loan.principal.toString().includes(this.searchValue) || loan.loanId.toString().includes(this.searchValue) ||
-      loan.loanTypeName.toLowerCase().includes(this.searchValue) || loan.status.toLowerCase().includes(this.searchValue)
-      ))
-    }else{
+  applyFilter() {
+    if (this.selectedStatus && this.selectedLoanType) {
+      this.tempLoanApplication = this.loanApplication.filter(loan => loan.status === this.selectedStatus && loan.loanTypeName === this.selectedLoanType);
+    } else if (this.selectedStatus) {
+      this.tempLoanApplication = this.loanApplication.filter(loan => loan.status === this.selectedStatus);
+    } else if (this.selectedLoanType) {
+      this.tempLoanApplication = this.loanApplication.filter(loan => loan.loanTypeName === this.selectedLoanType);
+    } else {
       this.tempLoanApplication = [];
     }
   }
-  reset(){
-    this.searchValue='';
+
+  onSearch() {
+    this.searchValue = this.searchValue.trim().toLowerCase();
+    if (this.searchValue) {
+      this.tempLoanApplication = this.loanApplication.filter(loan =>
+        (loan.loanId.toString().toLowerCase().includes(this.searchValue) ||
+          loan.loanTypeName.toLowerCase().includes(this.searchValue)
+          || loan.status.toLowerCase().includes(this.searchValue))
+      );
+    } else {
+      this.tempLoanApplication =this.loans;
+    }
+  }
+
+  onFilterStatus(data: string) {
+    if(data){
+      this.isFiltering=true;
+    }
+    this.selectedStatus = data;
+    this.applyFilter();
+  }
+
+  onFilterType(data: string) {
+    if(data){
+      this.isFiltering=true;
+    }
+    this.selectedLoanType = data;
+    this.applyFilter();
+  }
+
+  resetSelectTags() {
+    const filterValueSelect = document.querySelector('select[name="filterValue"]') as HTMLSelectElement;
+    filterValueSelect.selectedIndex = 0;
+    const loanTypeSelect = document.querySelector('select[name="loanType"]') as HTMLSelectElement;
+    loanTypeSelect.selectedIndex = 0;
+  }
+
+  reset() {
+    this.isFiltering=false;
+    this.resetSelectTags();
     this.tempLoanApplication = [];
+    this.selectedStatus = '';
+    this.selectedLoanType = '';
   }
   
   updateLoan(loanId:number){
@@ -73,5 +122,7 @@ export class CustomerLoansComponent {
     this.router.navigate(['customer/cancel-applied-loan',id])
   }
 
-  
+  getAllLoanType() {
+    this.customerService.getAllLoanTypes().subscribe((response) => { this.loanType = response; });
+  }
 }

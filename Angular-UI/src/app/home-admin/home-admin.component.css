@@ -1,63 +1,54 @@
 .main{
-  margin: 20px 20px 70px;
+  margin:20px;
 }
 
-.search-filter {
-  display:flex;
-  justify-content: flex-end;
+.loan-details-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px; 
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.loans-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.loans-table th, .loans-table td {
-  border: 1px solid #ddd;
+.loan-details {
+  border: 2px solid #f8f7f7;
   padding: 8px;
-  text-align: center;
-  color: #333; /* Dark text color */
-  background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+  background-color: white;
 }
 
-.loans-table th {
-  background-color: rgba(240, 240, 240, 0.8); /* Lighter background color for headers with transparency */
+.loan-details.cancelled {
+  background-color: #f5ebebe8;
+}
+.loan-details.rejected {
+  background-color: #f47382d9;
+}
+.loan-details.approved {
+  background-color: #a5f0b9df;
+}
+.loan-details.pending {
+  background-color: #c9d59dda;
+}
+
+@media (max-width: 768px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .loan-details-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detail-label {
   font-weight: bold;
-}
-
-.loans-table tr:nth-child(even) {
-  background-color: rgba(249, 249, 249, 0.8); /* Alternate row color with transparency */
-}
-
-.loans-table tr:hover {
-  background-color: rgba(241, 241, 241, 0.8); /* Hover color with transparency */
-}
-
-.loans-table select {
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.loans-table a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-.loans-table a:hover {
-  text-decoration: underline;
-}
-
-.loans-table tr.rejected {
-  background-color: #b8051a !important;
-}
-.loans-table tr.approved {
-  background-color: #09ea45 !important;
-}
-.loans-table tr.pending {
-  background-color: #c5f516 !important;
-}
-.loans-table tr.cancelled {
-  background-color: #ccc !important;
+  margin-right: 10px; 
 }
 
 .fa-download {
@@ -67,21 +58,34 @@
 .filter {
   display: inline;
   align-items: center;
-  margin-right: 10px;;
+  margin: 10px;
 }
 
 .search {
   display: inline;
-  margin-right: 20px;
+  margin:10px;
+}
+.input-search {
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 200px;
 }
 
 .filter-select , .input-search{
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #0e0303;
   background-color: #fff;
   font-size: 14px;
   margin-bottom: 10px;
+  width: 200px;
+}
+
+@media (max-width: 815px) {
+  .search,
+  .filter {
+    flex-basis: 100%;
+  }
 }
 
 .button {

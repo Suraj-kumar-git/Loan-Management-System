@@ -9,10 +9,10 @@ import { UserAuthService } from './user-auth.service';
 export class LoanInfoService {
 
   constructor(private http:HttpClient,private userAuthService:UserAuthService) { }
-  PATH_OF_API:string="http://suraj-palash-backend-lms.us-east-1.elasticbeanstalk.com/api/admin";
+  PATH_OF_API:string="http://loanManagementSystem.us-east-1.elasticbeanstalk.com/api/admin";
   public viewAllAppliedLoans(): Observable<any[]> {
     let token = this.userAuthService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any[]>(this.PATH_OF_API + "/viewAllLoans",{headers});
-  }  
+  }
 }

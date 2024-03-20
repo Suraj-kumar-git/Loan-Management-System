@@ -12,12 +12,11 @@ export class AppComponent {
 
   constructor(public userAuthService:UserAuthService,private router:Router){}
   image='';
-  // bgAdmin='/assets/image/Loan.jpg';
-  // bgCustomer='/assets/image/bgimg.jpg';
   bgUser='/assets/image/Loan.jpg';
   role:any=this.userAuthService.getRole();
 
   ngOnInit() {
+    this.logoutIfTokenExpired();
       this.image = this.bgUser;
   }
   logoutIfTokenExpired(): void {

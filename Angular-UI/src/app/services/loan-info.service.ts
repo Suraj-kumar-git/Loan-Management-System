@@ -15,11 +15,4 @@ export class LoanInfoService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any[]>(this.PATH_OF_API + "/viewAllLoans",{headers});
   }
-
-  // public downloadFile(url: string){
-  //   let token = this.userAuthService.getToken();
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  //   return this.http.get<File>(url,{headers});
-  // }
-  
 }

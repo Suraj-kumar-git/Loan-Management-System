@@ -10,28 +10,36 @@ import { CustomerService } from '../services/customer.service';
 })
 export class HomeCustomerComponent implements OnInit{
 
-  loanTypeList:LoanType[] = [];
+  tempLoanType: LoanType[] = [];
+  searchValue: string = '';
+  searchPerformed: boolean = false;
+
   constructor(private customerService:CustomerService, private router:Router){}
   ngOnInit(): void {
-    this.customerGetLoanType();
+    this.getLoanTypes();
   }
-  customerGetLoanType(){
+loanTypeList:LoanType[] = [];
+  getLoanTypes(){
     this.customerService.getAllLoanTypes().subscribe(
       (loanType)=>{
-        this.loanTypeList = loanType;
+        this.loanTypeList = loanType
       }
     );
   }
+
   applyLoan(loanTypeName:string) {
     this.router.navigate(['customer/apply-loan',loanTypeName])
   }
 
-  // calculateEMI(loanTypeName: string) {
-  //   this.router.navigate(['calculateEMI/',loanTypeName]);
-  //  }
-
-   updateLoan(loanId:number){
-    console.log(loanId);
-    this.router.navigate(['customer/update-applied-loan',loanId])
+  onSearch() {
+    this.searchValue = this.searchValue.trim().toLowerCase();
+    if (this.searchValue) {
+      this.tempLoanType = this.tempLoanType.filter(loanType =>
+        (loanType.loanTypeName.toLowerCase().includes(this.searchValue))
+      );
+    } else {
+      this.tempLoanType = this.loanTypeList;
+    }
+    this.searchPerformed = true;
   }
 }

@@ -131,20 +131,14 @@ form button:hover{
 }
 .group {
   display: flex;
-  justify-content: space-between;   /*Align buttons at start and end of container */
+  justify-content: space-between;
 }
 #cancel {
-  margin-left: auto; /* Push Cancel button to the right */
+  margin-left: auto;
 }
 .error{
   color: red;
 }
-/* .disabled-btn {
- 
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-} */
 .disabled-btn:hover{
   background-color: #ccc;
 }

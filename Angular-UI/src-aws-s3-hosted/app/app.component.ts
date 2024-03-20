@@ -16,6 +16,7 @@ export class AppComponent {
   role:any=this.userAuthService.getRole();
 
   ngOnInit() {
+    this.logoutIfTokenExpired();
       this.image = this.bgUser;
   }
   logoutIfTokenExpired(): void {

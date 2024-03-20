@@ -8,12 +8,12 @@
         <p>
           <label for="email">Email: </label>
           <input type="email" name="username" id="username" placeholder="youremail@example.com" ngModel #username="ngModel" required>
-          <span style="color: red" *ngIf="username.touched && username.invalid">Email is required</span>
+          <span style="color: red; display: block;" *ngIf="username.touched && username.invalid">Email is required</span>
         </p>
         <p>
           <label for="password">Password: </label>
           <input type="password" name="password" id="password" placeholder="Password" ngModel #password="ngModel" required>
-          <span style="color: red" *ngIf="password.touched && password.invalid">Password is required</span>
+          <span style="color: red; display: block;" *ngIf="password.touched && password.invalid">Password is required</span>
         </p>
         <p>
           <label>Login as:</label><br>
@@ -28,4 +28,3 @@
     </footer>
   </div>
 </div>
-w

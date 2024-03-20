@@ -28,7 +28,7 @@ export class CreateLoanTypeComponent implements OnInit {
       alert("LoanType Created Successfully");
       this.router.navigate(['admin/view-all-loans']);
     }, (error) => {
-      console.error(error);
+      alert('Error: LoanType already exists');
     });
   }
 

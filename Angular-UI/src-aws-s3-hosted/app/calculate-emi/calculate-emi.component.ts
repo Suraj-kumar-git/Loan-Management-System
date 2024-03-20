@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { LoanType } from '../Model/LoanType';
-import { LoanTypeService } from '../services/loan-type.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -22,14 +21,16 @@ export class CalculateEmiComponent {
   }
 
   updateManagementFees() {
-    const selectedLoanType = this.selectedLoan;
-    if (selectedLoanType) {
-      const loanType = this.loanTypes.find(type => type.loanTypeName === selectedLoanType.loanTypeName);
+    if (this.selectedLoan !== null && this.selectedLoan !== undefined) {
+      const loanType = this.loanTypes.find(type => type.loanTypeName === this.selectedLoan.loanTypeName);
       if (loanType) {
         console.log('Management Fees:', loanType.loanManagementFees);
       }
+    } else {
+      console.log("No selected LoanType");
     }
   }
+  
   
 
   getLoanTypes(){
@@ -39,9 +40,6 @@ export class CalculateEmiComponent {
       }
     );
   }
-  // calculateEMI(loanTypeName: string) {
-  //   this.router.navigate(['calculateEMI/',loanTypeName]);
-  //  }
 
   submitForm(data:any){
     console.log(data.loanAmount+" "+ data.loanDuration+ " " + this.loanInterestRate);

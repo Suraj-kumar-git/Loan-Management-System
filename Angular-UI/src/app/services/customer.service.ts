@@ -24,9 +24,7 @@ export class CustomerService {
 
   getAllLoanTypesCustomer(): Observable<LoanType[]> {
     const endpoint = this.baseUrl + '/customer/dashboard';
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<LoanType[]>(endpoint, { headers });
+    return this.http.get<LoanType[]>(endpoint, { headers:this.getAuthorizationHeader() });
   }
   getAllLoanTypes(): Observable<LoanType[]> {
     const endpoint = this.baseUrl + '/dashboard';
@@ -34,10 +32,8 @@ export class CustomerService {
   }
   
   getCustomerById(customerId: number): Observable<any> {
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const endpoint = this.baseUrl + `/admin/viewCustomerDetails/${customerId}`;
-    return this.http.get<any>(endpoint, { headers });
+    return this.http.get<any>(endpoint, { headers:this.getAuthorizationHeader() });
   }
 
   getAppliedLoans(customerId: number): Observable<any[]> {
@@ -46,10 +42,8 @@ export class CustomerService {
   }
 
   getAllCustomers(): Observable<any[]> {
-    let token = this.userAuthService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const endpoint = this.baseUrl + '/admin/viewAllCustomers';
-    return this.http.get<any[]>(endpoint, { headers });
+    return this.http.get<any[]>(endpoint, { headers:this.getAuthorizationHeader() });
   }
 
   applyForLoan(loanApplicationRequest: LoanApplicationRequest, file: File): Observable<boolean> {
@@ -83,7 +77,6 @@ export class CustomerService {
   }
   getUpdatedLoanApplication(loanId:number){
     console.log(" "+loanId);
-    
     this.http.get(this.baseUrl+'/customer/cancel-applied-loan/'+ loanId,{headers:this.getAuthorizationHeader()}).subscribe(
       response => alert("Loan application CANCELLED...")
     );

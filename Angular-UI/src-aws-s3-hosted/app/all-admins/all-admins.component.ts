@@ -21,11 +21,33 @@ export class AllAdminsComponent implements OnInit {
 
   getAllAdmins() {
     this.adminService.getAllAdmins().subscribe(admins => {
-      this.admins = admins;
-      this.tempAdmins = admins;
+      console.log(admins);
+      this.admins = admins.map(admin => {
+        const fullName = `${admin.adminFirstName} ${admin.adminLastName}`;
+        const profileImage = admin.profileImage;
+        if (profileImage) {
+          const imageData = admin.image;
+          let format = 'jpeg';
+          if (profileImage.toLowerCase().endsWith('.jpeg')) {
+            format = 'jpeg';
+          } else if (profileImage.toLowerCase().endsWith('.jpg')) {
+            format = 'jpg';
+          } else if (profileImage.toLowerCase().endsWith('.png')) {
+            format = 'png';
+          }
+          admin.image = this.getImageUrl(imageData, format);
+        }
+        return {
+          ...admin,
+          fullName,
+        };
+      });
+      this.tempAdmins = this.admins;
     });
   }
-
+  getImageUrl(base64String: string, format: string): string {
+    return `data:image/${format};base64,${base64String}`;
+  }
   onSearch() {
     this.searchValue = this.searchValue.trim().toLowerCase();
     if (this.searchValue) {

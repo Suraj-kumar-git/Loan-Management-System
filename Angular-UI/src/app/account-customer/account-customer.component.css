@@ -1,13 +1,53 @@
 .customer-details {
   width: 400px;
-  margin: auto;
-  margin-bottom: 70px;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
+}
+.photo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.photo-icons {
+  display: flex;
+  align-items: center;
+}
+
+.photo-icons label {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.photo-icons label i {
+  font-size: 20px;
+}
+
+
+@media (max-width: 450px) {
+  .customer-details{
+    width:300px;
+  }
+}
+@media (max-width: 350px) {
+  .customer-details{
+    width:200px;
+  }
+  .buttons button{
+    margin-top:10px;
+  }
 }
 .error {
 color: red;
